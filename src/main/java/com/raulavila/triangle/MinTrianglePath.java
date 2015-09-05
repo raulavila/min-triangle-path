@@ -3,6 +3,7 @@ package com.raulavila.triangle;
 import com.raulavila.triangle.exceptions.IncorrectNumberOfElements;
 import com.raulavila.triangle.exceptions.InvalidNumberException;
 import com.raulavila.triangle.exceptions.NegativeNumberException;
+import com.raulavila.triangle.model.Node;
 import com.raulavila.triangle.utils.LineUtils;
 import com.raulavila.triangle.utils.TriangleBuilder;
 import com.raulavila.triangle.utils.TrianglePathFinder;
@@ -25,29 +26,12 @@ public class MinTrianglePath {
             System.exit(1);
         }
 
-        String line;
+        Node triangleRoot = buildTriangleFromLines(lines);
 
-        line = lines.get(0);
-
-        List<Long> numbers;
-        numbers = checkAndParseNumberList(line, 1);
-
-        TriangleBuilder builder = TriangleBuilder.newInstance(numbers.get(0));
-
-        int lineNumber = 2;
-        for (Iterator<String> it = lines.listIterator(1); it.hasNext(); lineNumber++) { //start with second line
-
-            line = it.next();
-
-            numbers = checkAndParseNumberList(line, (lineNumber));   //we expect as many elements as lineNumber
-            builder.addLevel(numbers);
-        }
-
-        TrianglePathFinder pathFinder = TrianglePathFinder.newInstance(builder.getTriangleRoot());
+        TrianglePathFinder pathFinder = TrianglePathFinder.newInstance(triangleRoot);
 
         List<Long> minimalPath = pathFinder.getMinimalPath();
         Long minimalSum = pathFinder.getMinimalSum();
-
 
         System.out.println(String.format("%s = %d",
                 getSumExpression(minimalPath),
@@ -77,6 +61,33 @@ public class MinTrianglePath {
             System.exit(1);
             return null;  //never reached
         }
+    }
+
+    private static Node buildTriangleFromLines(List<String> lines) {
+        String line;
+
+        line = lines.get(0);
+
+        List<Long> numbers;
+        numbers = checkAndParseNumberList(line, 1);
+
+        TriangleBuilder builder = TriangleBuilder.newInstance(numbers.get(0));
+
+        int lineNumber = 2;
+        for (Iterator<String> it = lines.listIterator(1);
+             it.hasNext();
+             lineNumber++) { //start with second line
+
+            line = it.next();
+
+            //we expect as many elements as lineNumber
+            numbers = checkAndParseNumberList(line, lineNumber);
+
+            builder.addLevel(numbers);
+        }
+
+        Node triangleRoot = builder.getTriangleRoot();
+        return triangleRoot;
     }
 
     private static List<Long> checkAndParseNumberList(String line, int lineNumber) {

@@ -74,7 +74,7 @@ public class TriangleBuilder {
     }
 
     //Developed mainly for tests purposes
-    public List<List<Long>> getTriangleAsLists() {
+    List<List<Long>> getTriangleAsLists() {
         List<List<Long>> resultList = new ArrayList<List<Long>>();
 
         Node node = root;
