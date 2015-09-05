@@ -3,35 +3,35 @@ package com.raulavila.triangle.model;
 import java.util.List;
 
 public interface Node {
-	
-	long getValue();
-	
-	void setValue(long value);
 
-	Node getPreviousInLevel();
+    long getValue();
 
-	void setPreviousInLevel(Node previous);
+    void setValue(long value);
 
-	Node getNextInLevel();
+    Node getPreviousInLevel();
 
-	void setNextInLevel(Node next);
-		
-	void addChildNode(Node node);
-	
-	int getChildrenNumber();
+    void setPreviousInLevel(Node previous);
 
-	List<Node> getChildrenNodes();
-	
-	Node getChild(int index);
+    Node getNextInLevel();
 
-	void removeChild(int index);
-	
-	boolean isLeaf();
-	
-	List<Long> getMinimalPath();
-	
-	void addToMinimalPath(List<Long> path);
-	
+    void setNextInLevel(Node next);
+
+    void addChildNode(Node node);
+
+    int getChildrenNumber();
+
+    List<Node> getChildrenNodes();
+
+    Node getChild(int index);
+
+    void removeChild(int index);
+
+    boolean isLeaf();
+
+    List<Long> getMinimalPath();
+
+    void addToMinimalPath(List<Long> path);
+
 }
 
 
