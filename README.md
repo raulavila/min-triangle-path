@@ -38,3 +38,7 @@ $ java MinTrianglePath < testfile.txt
 Minimal path is: 7 + 6 + 3 + 2 = 18
 
 An average PC should be able to produce the answer for a 500-line triangle within 0.5 seconds.
+
+##Run
+
+`mvn exec:java -Dexec.mainClass="com.raulavila.triangle.MinTrianglePath" <testfile.txt`
