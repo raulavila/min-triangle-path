@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class TrianglePathFinderTest {
 
-	@Test
+    @Test
     public void testBigTriangle() {
         TriangleBuilder builder = TriangleBuilder.newInstance(5);
        
@@ -44,5 +44,5 @@ public class TrianglePathFinderTest {
     }
 
 
-	
+
 }
